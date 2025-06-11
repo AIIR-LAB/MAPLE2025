@@ -195,3 +195,8 @@ em {
   font-style: italic;
   color: #6c757d;
 }
+
+img {
+  width: 50%;
+  height: auto;
+}
