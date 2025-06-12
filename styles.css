@@ -124,11 +124,38 @@ a:hover {
 }
 
 /* Speaker and Organizer grids */
-.speaker-grid, .organizer-grid {
+.speaker-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2em;
   margin-top: 1em;
+}
+
+.organizer-grid {
+  display: flex;
+  justify-content: center;
+  gap: 4em;
+  margin-top: 2em;
+}
+
+.organizer-section {
+  text-align: center;
+  flex: 1;
+}
+
+.organizer-section h3 {
+  margin-bottom: 1.5em;
+  color: #212529;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 0.3em;
+  font-size: 1.3em;
+}
+
+.organizer-row {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: nowrap;
 }
 
 .speaker, .organizer {
@@ -138,6 +165,11 @@ a:hover {
   border-radius: 8px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid #e9ecef;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .speaker:hover, .organizer:hover {
@@ -145,19 +177,18 @@ a:hover {
   box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
+/* Fallback for missing images */
 .speaker-img, .organizer-img {
   width: 150px;
   height: 180px;
   border-radius: 8px;
   object-fit: cover;
-  margin-bottom: 1em;
+  margin: 0 auto 1em auto;
   border: 3px solid #fff;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   color: white;
   font-weight: bold;
   font-size: 2.5em;
@@ -198,7 +229,7 @@ a:hover {
   display: none;
 }
 
-.speaker h3, .organizer h3 {
+.speaker h3, .organizer h4 {
   margin: 0.5em 0 0.3em;
   color: #212529;
   font-size: 1.1em;
@@ -222,6 +253,19 @@ footer {
 }
 
 /* Responsive design */
+@media (max-width: 1024px) {
+  .organizer-grid {
+    flex-direction: column;
+    gap: 3em;
+    align-items: center;
+  }
+  
+  .organizer-section {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
 @media (max-width: 768px) {
   nav ul {
     flex-direction: column;
@@ -240,8 +284,24 @@ footer {
     padding: 1em;
   }
   
-  .speaker-grid, .organizer-grid {
+  .speaker-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .organizer-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+  }
+}
+
+@media (max-width: 480px) {
+  .organizer-grid {
+    gap: 2em;
+  }
+  
+  .organizer-row {
+    gap: 1em;
   }
 }
 
